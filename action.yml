@@ -1,0 +1,10 @@
+name: 'Star to Discord'
+author: 'SP'
+description: 'Send an embed to the Natro Macro Discord server when anyone stars NatroTeam/NatroMacro'
+inputs:
+  webhook_url:
+    description: 'Discord Webhook URL'
+    required: true
+runs:
+  using: 'node20'
+  main: 'index.js'
