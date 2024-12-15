@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import * as fs from 'fs';
 
 const webhook_url = core.getInput('webhook_url');
-const badWords = ['fuck', 'gas', 'faggot', 'nigga', 'nigger', 'faggots', 'jews', 'kill', 'bitch', 'Faggot', 'Jew', 'Nigger', 'Nigga', 'Fuck', 'Gas'];
+const badWords = ['fuck', 'faggot', 'nigga', 'nigger', 'faggots'];
 
 let star_users = (fs.existsSync('star_users.json') && fs.statSync('star_users.json').isFile()) ? JSON.parse(fs.readFileSync('star_users.json')) : [];
 star_users.push = function () {
@@ -16,7 +16,7 @@ star_users.push = function () {
 
 let sender = github.context.payload.sender;
 
-if (badWords.some(word => sender.login.includes(word))) {
+if (badWords.some(word => sender.login.toLowerCase().includes(word))) {
     core.info(`User @${sender.login} contains bad words.`);
 } else if (star_users.includes(sender.login)) {
     core.info(`User @${sender.login} has already starred the repo recently!`);
