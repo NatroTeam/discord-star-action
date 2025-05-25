@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import * as fs from 'fs';
 
 const webhook_url = core.getInput('webhook_url');
-const badWords = ['fuck', 'faggot', 'nigga', 'nigger', 'faggots'];
+const badWords = ['fuck', 'faggot', 'nigga', 'nigger', 'femboy', 'natro', 'dick', 'sperm', 'cock', 'porn', 'tits'];
 
 let star_users = (fs.existsSync('star_users.json') && fs.statSync('star_users.json').isFile()) ? JSON.parse(fs.readFileSync('star_users.json')) : [];
 star_users.push = function () {
